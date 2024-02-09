@@ -28,6 +28,22 @@ const docTemplate = `{
                     "User"
                 ],
                 "summary": "Autenticar User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Email do usuario",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Token do usuario",
+                        "name": "Token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "{\"message\": \"Result\"}",
@@ -51,6 +67,29 @@ const docTemplate = `{
                     "User"
                 ],
                 "summary": "Criar um novo usuario",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Email do usuario",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Nome do usuario",
+                        "name": "Name",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Senha do usuario",
+                        "name": "Password",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "{\"message\": \"Result\"}",
@@ -74,6 +113,15 @@ const docTemplate = `{
                     "Login"
                 ],
                 "summary": "Desconectar o usuario",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Email do usuario",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "{\"message\": \"Result\"}",
@@ -97,6 +145,22 @@ const docTemplate = `{
                     "Login"
                 ],
                 "summary": "Conectar o usuario",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Email do usuario",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Senha do usuario",
+                        "name": "Password",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "{\"message\": \"Result\"}",
@@ -120,6 +184,15 @@ const docTemplate = `{
                     "User"
                 ],
                 "summary": "Criar token",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Email do usuario",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "{\"message\": \"Result\"}",
@@ -143,6 +216,15 @@ const docTemplate = `{
                     "User"
                 ],
                 "summary": "Buscar um usuario",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Email do usuario",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "{\"message\": \"Result\"}",

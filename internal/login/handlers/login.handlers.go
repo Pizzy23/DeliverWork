@@ -11,8 +11,8 @@ import (
 // @Description Altera o modo de login para true
 // @Accept json
 // @Produce json
-// @Header Email query string true "Email para pegar o atributo do login"
-// @Header Password query string true "Senha do usuario"
+// @Param Email header string true "Email do usuario"
+// @Param Password header string true "Senha do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
 // @Router /api/login [put]
 func LoginUser(c *gin.Context) {
@@ -25,7 +25,7 @@ func LoginUser(c *gin.Context) {
 // @Description Altera o modo de login para false
 // @Accept json
 // @Produce json
-// @Header Email query string true "Email para pegar o atributo do login"
+// @Param Email header string true "Email do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
 // @Router /api/loggout [put]
 func LoggedUser(c *gin.Context) {
@@ -38,7 +38,7 @@ func LoggedUser(c *gin.Context) {
 // @Description Criar o token e ser enviado ao usuario
 // @Accept json
 // @Produce json
-// @Header Email query string true "Email do usuario"
+// @Param Email header string true "Email do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
 // @Router /api/token [post]
 func TokenUser(c *gin.Context) {
@@ -51,8 +51,8 @@ func TokenUser(c *gin.Context) {
 // @Description Autenticar o usuario atraves do email
 // @Accept json
 // @Produce json
-// @Header Email query string true "Email do usuario"
-// @Header Token query string true "Token do usuario"
+// @Param Email header string true "Email do usuario"
+// @Param Token header string true "Token do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
 // @Router /api/auth [put]
 func AuthUser(c *gin.Context) {
@@ -70,9 +70,9 @@ func AuthUser(c *gin.Context) {
 // @Description Criar um usuario a partir das novas infos
 // @Accept json
 // @Produce json
-// @Header Email query string true "Email do usuario"
-// @Header Name query string true "Nome do usuario"
-// @Header Password query string true "Senha do usuario"
+// @Param Email header string true "Email do usuario"
+// @Param Name header string true "Nome do usuario"
+// @Param Password header string true "Senha do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
 // @Router /api/create-user [post]
 func CreateUser(c *gin.Context) {
@@ -93,7 +93,7 @@ func CreateUser(c *gin.Context) {
 // @Description Buscar um usuario
 // @Accept json
 // @Produce json
-// @Header Email query string true "Email do usuario"
+// @Param Email header string true "Email do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
 // @Router /api/user [get]
 func SeachUser(c *gin.Context) {

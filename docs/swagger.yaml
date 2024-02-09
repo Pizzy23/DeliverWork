@@ -6,6 +6,17 @@ paths:
       consumes:
       - application/json
       description: Autenticar o usuario atraves do email
+      parameters:
+      - description: Email do usuario
+        in: header
+        name: Email
+        required: true
+        type: string
+      - description: Token do usuario
+        in: header
+        name: Token
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -21,6 +32,22 @@ paths:
       consumes:
       - application/json
       description: Criar um usuario a partir das novas infos
+      parameters:
+      - description: Email do usuario
+        in: header
+        name: Email
+        required: true
+        type: string
+      - description: Nome do usuario
+        in: header
+        name: Name
+        required: true
+        type: string
+      - description: Senha do usuario
+        in: header
+        name: Password
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -36,6 +63,12 @@ paths:
       consumes:
       - application/json
       description: Altera o modo de login para false
+      parameters:
+      - description: Email do usuario
+        in: header
+        name: Email
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -51,6 +84,17 @@ paths:
       consumes:
       - application/json
       description: Altera o modo de login para true
+      parameters:
+      - description: Email do usuario
+        in: header
+        name: Email
+        required: true
+        type: string
+      - description: Senha do usuario
+        in: header
+        name: Password
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -66,6 +110,12 @@ paths:
       consumes:
       - application/json
       description: Criar o token e ser enviado ao usuario
+      parameters:
+      - description: Email do usuario
+        in: header
+        name: Email
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -81,6 +131,12 @@ paths:
       consumes:
       - application/json
       description: Buscar um usuario
+      parameters:
+      - description: Email do usuario
+        in: header
+        name: Email
+        required: true
+        type: string
       produces:
       - application/json
       responses:
