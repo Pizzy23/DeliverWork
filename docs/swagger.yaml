@@ -1,0 +1,94 @@
+info:
+  contact: {}
+paths:
+  /api/auth:
+    put:
+      consumes:
+      - application/json
+      description: Autenticar o usuario atraves do email
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"message": "Result"}'
+          schema:
+            type: string
+      summary: Autenticar User
+      tags:
+      - User
+  /api/create-user:
+    post:
+      consumes:
+      - application/json
+      description: Criar um usuario a partir das novas infos
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"message": "Result"}'
+          schema:
+            type: string
+      summary: Criar um novo usuario
+      tags:
+      - User
+  /api/loggout:
+    put:
+      consumes:
+      - application/json
+      description: Altera o modo de login para false
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"message": "Result"}'
+          schema:
+            type: string
+      summary: Desconectar o usuario
+      tags:
+      - Login
+  /api/login:
+    put:
+      consumes:
+      - application/json
+      description: Altera o modo de login para true
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"message": "Result"}'
+          schema:
+            type: string
+      summary: Conectar o usuario
+      tags:
+      - Login
+  /api/token:
+    post:
+      consumes:
+      - application/json
+      description: Criar o token e ser enviado ao usuario
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"message": "Result"}'
+          schema:
+            type: string
+      summary: Criar token
+      tags:
+      - User
+  /api/user:
+    get:
+      consumes:
+      - application/json
+      description: Buscar um usuario
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"message": "Result"}'
+          schema:
+            type: string
+      summary: Buscar um usuario
+      tags:
+      - User
+swagger: "2.0"
