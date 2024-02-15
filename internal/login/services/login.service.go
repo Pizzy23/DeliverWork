@@ -36,12 +36,17 @@ func Logged(c *gin.Context, email string) {
 }
 
 func CreateUser(c *gin.Context, filters map[string]interface{}) {
-	password := filters["password"]
-	filters["token"] = CreateToken()
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password.(string)), bcrypt.DefaultCost)
+	password, ok := filters["password"].(string)
+	if !ok {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Password must be a string"})
+		return
+	}
 
+	filters["token"] = CreateToken()
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
 		fmt.Println("Internal Error:", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal server error"})
 		return
 	}
 
@@ -52,7 +57,7 @@ func CreateUser(c *gin.Context, filters map[string]interface{}) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": result, "Response": "User Create"})
+	c.JSON(http.StatusOK, gin.H{"message": result, "Response": "User created"})
 }
 
 func Auth(c *gin.Context, filters map[string]interface{}) {
@@ -97,8 +102,9 @@ func GetAnotherToken(c *gin.Context, email string) {
 	err := login.StoreToken(db.Repo, email, token)
 	if err == nil {
 		c.JSON(http.StatusOK, gin.H{"message": "New token send for your email"})
+	} else {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err})
 	}
-	c.JSON(http.StatusBadRequest, gin.H{"error": err})
 }
 
 func GetUser(c *gin.Context, email string) {

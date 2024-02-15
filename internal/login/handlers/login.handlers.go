@@ -14,7 +14,7 @@ import (
 // @Param Email header string true "Email do usuario"
 // @Param Password header string true "Senha do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
-// @Router /api/login [put]
+// @Router /login [put]
 func LoginUser(c *gin.Context) {
 	email := c.GetHeader("email")
 	login.Login(c, email)
@@ -27,7 +27,7 @@ func LoginUser(c *gin.Context) {
 // @Produce json
 // @Param Email header string true "Email do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
-// @Router /api/loggout [put]
+// @Router /loggout [put]
 func LoggedUser(c *gin.Context) {
 	email := c.GetHeader("email")
 	login.Logged(c, email)
@@ -40,7 +40,7 @@ func LoggedUser(c *gin.Context) {
 // @Produce json
 // @Param Email header string true "Email do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
-// @Router /api/token [post]
+// @Router /token [post]
 func TokenUser(c *gin.Context) {
 	email := c.GetHeader("email")
 	login.GetAnotherToken(c, email)
@@ -54,7 +54,7 @@ func TokenUser(c *gin.Context) {
 // @Param Email header string true "Email do usuario"
 // @Param Token header string true "Token do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
-// @Router /api/auth [put]
+// @Router /auth [put]
 func AuthUser(c *gin.Context) {
 	email := c.GetHeader("email")
 	token := c.GetHeader("token")
@@ -74,7 +74,7 @@ func AuthUser(c *gin.Context) {
 // @Param Name header string true "Nome do usuario"
 // @Param Password header string true "Senha do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
-// @Router /api/create-user [post]
+// @Router /register [post]
 func CreateUser(c *gin.Context) {
 	name := c.GetHeader("Name")
 	email := c.GetHeader("Email")
@@ -95,7 +95,7 @@ func CreateUser(c *gin.Context) {
 // @Produce json
 // @Param Email header string true "Email do usuario"
 // @Success 200 {string} json "{"message": "Result"}"
-// @Router /api/user [get]
+// @Router /user [get]
 func SeachUser(c *gin.Context) {
 	email := c.GetHeader("Email")
 	login.GetUser(c, email)

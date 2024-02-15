@@ -7,10 +7,12 @@ import (
 )
 
 func CreateNewUser(q *gorm.DB, filters map[string]interface{}) (models.User, error) {
+	passwordBytes := filters["password"].([]uint8)
+
 	newUser := models.User{
 		Name:     filters["name"].(string),
 		Email:    filters["email"].(string),
-		Password: filters["password"].(string),
+		Password: string(passwordBytes),
 		IsLogged: false,
 		IsValid:  false,
 	}

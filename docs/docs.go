@@ -15,7 +15,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/api/auth": {
+        "/auth": {
             "put": {
                 "description": "Autenticar o usuario atraves do email",
                 "consumes": [
@@ -54,7 +54,78 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/create-user": {
+        "/loggout": {
+            "put": {
+                "description": "Altera o modo de login para false",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Desconectar o usuario",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Email do usuario",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"message\": \"Result\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "put": {
+                "description": "Altera o modo de login para true",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Conectar o usuario",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Email do usuario",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Senha do usuario",
+                        "name": "Password",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"message\": \"Result\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/register": {
             "post": {
                 "description": "Criar um usuario a partir das novas infos",
                 "consumes": [
@@ -100,78 +171,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/loggout": {
-            "put": {
-                "description": "Altera o modo de login para false",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Login"
-                ],
-                "summary": "Desconectar o usuario",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Email do usuario",
-                        "name": "Email",
-                        "in": "header",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"message\": \"Result\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/login": {
-            "put": {
-                "description": "Altera o modo de login para true",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Login"
-                ],
-                "summary": "Conectar o usuario",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Email do usuario",
-                        "name": "Email",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "Senha do usuario",
-                        "name": "Password",
-                        "in": "header",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"message\": \"Result\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/token": {
+        "/token": {
             "post": {
                 "description": "Criar o token e ser enviado ao usuario",
                 "consumes": [
@@ -203,7 +203,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/user": {
+        "/user": {
             "get": {
                 "description": "Buscar um usuario",
                 "consumes": [

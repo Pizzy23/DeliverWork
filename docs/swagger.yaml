@@ -1,7 +1,7 @@
 info:
   contact: {}
 paths:
-  /api/auth:
+  /auth:
     put:
       consumes:
       - application/json
@@ -27,7 +27,54 @@ paths:
       summary: Autenticar User
       tags:
       - User
-  /api/create-user:
+  /loggout:
+    put:
+      consumes:
+      - application/json
+      description: Altera o modo de login para false
+      parameters:
+      - description: Email do usuario
+        in: header
+        name: Email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"message": "Result"}'
+          schema:
+            type: string
+      summary: Desconectar o usuario
+      tags:
+      - Login
+  /login:
+    put:
+      consumes:
+      - application/json
+      description: Altera o modo de login para true
+      parameters:
+      - description: Email do usuario
+        in: header
+        name: Email
+        required: true
+        type: string
+      - description: Senha do usuario
+        in: header
+        name: Password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"message": "Result"}'
+          schema:
+            type: string
+      summary: Conectar o usuario
+      tags:
+      - Login
+  /register:
     post:
       consumes:
       - application/json
@@ -58,54 +105,7 @@ paths:
       summary: Criar um novo usuario
       tags:
       - User
-  /api/loggout:
-    put:
-      consumes:
-      - application/json
-      description: Altera o modo de login para false
-      parameters:
-      - description: Email do usuario
-        in: header
-        name: Email
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: '{"message": "Result"}'
-          schema:
-            type: string
-      summary: Desconectar o usuario
-      tags:
-      - Login
-  /api/login:
-    put:
-      consumes:
-      - application/json
-      description: Altera o modo de login para true
-      parameters:
-      - description: Email do usuario
-        in: header
-        name: Email
-        required: true
-        type: string
-      - description: Senha do usuario
-        in: header
-        name: Password
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: '{"message": "Result"}'
-          schema:
-            type: string
-      summary: Conectar o usuario
-      tags:
-      - Login
-  /api/token:
+  /token:
     post:
       consumes:
       - application/json
@@ -126,7 +126,7 @@ paths:
       summary: Criar token
       tags:
       - User
-  /api/user:
+  /user:
     get:
       consumes:
       - application/json

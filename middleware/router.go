@@ -21,10 +21,11 @@ func SetupRouter() *gin.Engine {
 	v1 := r.Group("/api")
 	{
 		v1.PUT("/login", login.LoginUser)
-		v1.PUT("/logged", login.LoggedUser)
+		v1.PUT("/loggout", login.LoggedUser)
 		v1.POST("/register", login.CreateUser)
 		v1.POST("/auth", login.AuthUser)
 		v1.POST("/token", login.TokenUser)
+		v1.GET("/user", login.SeachUser)
 	}
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	return r
